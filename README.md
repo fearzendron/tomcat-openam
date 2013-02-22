@@ -25,7 +25,7 @@ The following Opscode cookbooks are dependencies:
 * apache2
 * java
 * apt
-* opendj `(If you wish to have seperate opendj)`
+* opendj-openam `(If you wish to have seperate opendj)`
 
 Attributes
 ==========
@@ -130,12 +130,12 @@ An example for a tomcat-openam vanilla role:
 
 configure
 ---------
-This recipe is just to configure OpenAM. For this you need OpenDJ. There is a cookbook for OpenDJ in cookbook website as opendj. Run opendj in another instance using the `opendj` cookbook. Give the url id of opendj to `node["tomcat-openam"]["cfg"]["user-store"]["host"]`
+This recipe is just to configure OpenAM. For this you need OpenDJ. There is a cookbook for OpenDJ in cookbook website as opendj-openam. Run opendj in another instance using the `opendj-openam` cookbook. Give the url id of opendj to `node["tomcat-openam"]["cfg"]["user-store"]["host"]`
 
 An example for a opendj role:
 
-	name "opendj"
-	run_list "recipe[apt]", "recipe[opendj::single_instance]"
+	name "opendj-openam"
+	run_list "recipe[apt]", "recipe[opendj-openam::single_instance]"
 
 An example for a tomcat-openam configure role:
 

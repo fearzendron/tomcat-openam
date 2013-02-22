@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: tomcat-openam
-# Recipe:: not_configure_openam
+# Recipe:: vanilla
 #
 # Copyright 2012, Megam Systems
 #
