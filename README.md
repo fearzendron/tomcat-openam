@@ -23,7 +23,6 @@ Platform:
 The following Opscode cookbooks are dependencies:
 
 * apache2
-* java
 * apt
 * opendj-openam `(If you wish to have seperate opendj)`
 
@@ -117,7 +116,7 @@ This recipe installs apache2, java, tomcat7, OpenAM and OpenDJ in a single insta
 An example for a tomcat-openam full_stack role:
 
 	name "openam_fullstack"
-	run_list "recipe[apt]", "recipe[apache2]", "recipe[tomcat-openam::full_stack]"
+	run_list "recipe[tomcat-openam::full_stack]"
 
 vanilla
 -------
@@ -126,7 +125,7 @@ This recipe installs apache2, java, tomcat7 and OpenAM in an instance. apache2 a
 An example for a tomcat-openam vanilla role:
 
 	name "openam_vanilla"
-	run_list "recipe[apt]", "recipe[apache2]", "recipe[tomcat-openam::vanilla]"
+	run_list "recipe[tomcat-openam::vanilla]"
 
 configure
 ---------
@@ -135,7 +134,7 @@ This recipe is just to configure OpenAM. For this you need OpenDJ. There is a co
 An example for a opendj role:
 
 	name "opendj-openam"
-	run_list "recipe[apt]", "recipe[opendj-openam::single_instance]"
+	run_list "recipe[opendj-openam::single_instance]"
 
 An example for a tomcat-openam configure role:
 
