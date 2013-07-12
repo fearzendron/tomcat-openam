@@ -15,10 +15,10 @@ default["tomcat-openam"]["dir-path"]["tmp-openam"] = "/home/ubuntu/tmp/openam"
 default["tomcat-openam"]["dir-path"][".openssocfg"] = "/home/ubuntu/.openssocfg"
 
 #Source files
-default["tomcat-openam"]["source"]["tomcat"] = "https://s3-ap-southeast-1.amazonaws.com/megam/chef/tomcat/tomcat.tar.gz"
-default["tomcat-openam"]["source"]["openam-war"] = "https://s3-ap-southeast-1.amazonaws.com/megam/chef/openam/openam.war"#version 10.0.1
-default["tomcat-openam"]["source"]["ssoconfig-zip"] = "https://s3-ap-southeast-1.amazonaws.com/megam/chef/openam/ssoConfiguratorTools.zip"
-default["tomcat-openam"]["source"]["opendj-zip"] = "https://s3-ap-southeast-1.amazonaws.com/megam/chef/opendj/opendj.zip"
+default["tomcat-openam"]["source"]["tomcat"] = "https://s3-ap-southeast-1.amazonaws.com/megampub/0.1/war/tomcat/tomcat.tar.gz"
+default["tomcat-openam"]["source"]["openam-war"] = "https://s3-ap-southeast-1.amazonaws.com/megampub/0.1/war/openam/openam.war"#version 10.0.1
+default["tomcat-openam"]["source"]["ssoconfig-zip"] = "https://s3-ap-southeast-1.amazonaws.com/megampub/0.1/war/openam/ssoConfiguratorTools.zip"
+default["tomcat-openam"]["source"]["opendj-zip"] = "https://s3-ap-southeast-1.amazonaws.com/megampub/0.1/war/opendj/opendj.zip"
 
 #Remote files location
 default["tomcat-openam"]["remote-location"]["tomcat-tar"] = "/home/ubuntu/tmp/tomcat.tar.gz"
@@ -46,10 +46,10 @@ default["tomcat-openam"]["opendj"]["arg-val"]["rootUserPassword"] = "secret12"
 default["tomcat-openam"]["opendj"]["arg-val"]["ldapPort"] = "1389"
 
 #Java Options
-default["tomcat-openam"]["java-options"] = "-Xms256m -Xmx1024m"
+default["tomcat-openam"]["java-options"] = "-Xms256m -Xmx512m"
 
 #Configuration Commands
-default["tomcat-openam"]["cmd"]["config"]["opendj"] = "./opendj/setup --cli --baseDN  #{node["tomcat-openam"]["opendj"]["arg-val"]["baseDN"]}  --rootUserDN  '#{node["tomcat-openam"]["opendj"]["arg-val"]["rootUserDN"]}' --rootUserPassword  #{node["tomcat-openam"]["opendj"]["arg-val"]["rootUserPassword"]} -h `hostname` --ldapPort #{node["tomcat-openam"]["opendj"]["arg-val"]["ldapPort"]} --no-prompt"
+default["tomcat-openam"]["cmd"]["config"]["opendj"] = "./opendj/setup --cli --baseDN  #{node["tomcat-openam"]["opendj"]["arg-val"]["baseDN"]}  --rootUserDN  '#{node["tomcat-openam"]["opendj"]["arg-val"]["rootUserDN"]}' --rootUserPassword  #{node["tomcat-openam"]["opendj"]["arg-val"]["rootUserPassword"]} --ldapPort #{node["tomcat-openam"]["opendj"]["arg-val"]["ldapPort"]} --no-prompt"
 
 default["tomcat-openam"]["cmd"]["config-sso"] = "java -jar #{node["tomcat-openam"]["java-options"]} /home/ubuntu/tmp/openam/configurator.jar -f /home/ubuntu/tmp/openam_cli_config.properties > /home/ubuntu/tmp/openam.out"
 
@@ -77,7 +77,7 @@ default["tomcat-openam"]["cfg"]["ds-dirmgrdn"] = "cn=Directory Manager"
 default["tomcat-openam"]["cfg"]["ds-dirmgrpasswd"] = "emdstor3me"
 default["tomcat-openam"]["cfg"]["user-store"]["type"] = "LDAPv3ForOpenDS"
 default["tomcat-openam"]["cfg"]["user-store"]["ssl"] = "SIMPLE"
-default["tomcat-openam"]["cfg"]["user-store"]["host"] = "ec2-54-251-5-170.ap-southeast-1.compute.amazonaws.com" #opendj DNS
+default["tomcat-openam"]["cfg"]["user-store"]["host"] = "opendj.megam.co.in" #opendj DNS
 default["tomcat-openam"]["cfg"]["user-store"]["port"] = "1389"
 default["tomcat-openam"]["cfg"]["user-store"]["suffix"] = "dc=example,dc=com"
 default["tomcat-openam"]["cfg"]["user-store"]["mgrdn"] = "cn=Directory Manager"

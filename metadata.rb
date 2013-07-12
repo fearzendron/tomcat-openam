@@ -6,8 +6,8 @@ description      "Installs/Configures tomcat7 and OpenAM"
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version          "0.1.0"
 
-%w{ java }.each do |cb|
-  depends cb
+%w{ apache2 apt }.each do |ckbk|
+  depends ckbk
 end
 
 %w{ debian ubuntu }.each do |os|
